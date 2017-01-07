@@ -54,7 +54,7 @@ func (w *Worker) Handle(h TaskHandler) {
 
 }
 
-const getTimeout = time.Second
+const WorkerGetTimeout = time.Second
 
 func (w *Worker) getHandler(t *Task) (TaskHandler, bool) {
 	w.mutx.RLock()
@@ -140,7 +140,7 @@ func (w *Worker) Run() {
 			default:
 			}
 
-			job, err := client.Get(getTimeout, w.channels...)
+			job, err := client.Get(WorkerGetTimeout, w.channels...)
 
 			if err == nil {
 
