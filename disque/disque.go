@@ -165,7 +165,7 @@ func (c *RedisClient) Get(timeout time.Duration, queues ...string) (Job, error) 
 		return Job{}, err
 	}
 	if ret == nil || len(ret) == 0 {
-		return Job{}, errors.New("disque: no jobs returned")
+		return Job{}, nil //errors.New("disque: no jobs returned")
 	}
 	return ret[0], nil
 
@@ -194,8 +194,12 @@ func (c *RedisClient) GetMulti(count int, timeout time.Duration, queues ...strin
 
 	vals, err := redis.Values(c.conn.Do("GETJOB", args...))
 
-	if err != nil {
+	if err != nil && err != redis.ErrNil {
 		return nil, fmt.Errorf("disque: could not get jobs: %s", err)
+	}
+
+	if vals == nil {
+		return nil, nil
 	}
 
 	ret := make([]Job, 0, len(vals))
