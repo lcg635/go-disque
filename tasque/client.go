@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/EverythingMe/go-disque/disque"
+	"github.com/lcg635/go-disque/disque"
 	"github.com/garyburd/redigo/redis"
 )
 
