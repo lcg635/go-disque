@@ -54,7 +54,7 @@ func (w *Worker) Handle(h TaskHandler) {
 
 }
 
-const WorkerGetTimeout = time.Second
+var WorkerGetTimeout = time.Second
 
 func (w *Worker) getHandler(t *Task) (TaskHandler, bool) {
 	w.mutx.RLock()
