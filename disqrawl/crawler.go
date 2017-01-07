@@ -13,8 +13,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/EverythingMe/go-disque/disqchan"
-	"github.com/EverythingMe/go-disque/tasque"
+	"github.com/lcg635/go-disque/disqchan"
+	"github.com/lcg635/go-disque/tasque"
 	"github.com/PuerkitoBio/goquery"
 )
 
